@@ -1,0 +1,3 @@
+web: bokeh serve --port=$PORT
+--allow-websocket-origin=Interactive_Healthcare_Map.herokuapp.com --address=0.0.0.0
+--use-xheaders Interactive_Healthcare_Map.py
