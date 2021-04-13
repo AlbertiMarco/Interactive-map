@@ -12,7 +12,7 @@ from bokeh.models import Slider, HoverTool
 from bokeh.layouts import widgetbox, row, column
 
 #Import Data
-mun=gpd.read_file('interactive-map-healthcare/dataframe.shp')
+mun=gpd.read_file('dataframe.shp')
 data=mun[mun['year']==2016] #select a single year
 nl_data_json = json.loads(data.to_json())
 json_data = json.dumps(nl_data_json)
