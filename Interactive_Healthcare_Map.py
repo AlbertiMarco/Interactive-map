@@ -8,7 +8,7 @@ from bokeh.plotting import figure
 from bokeh.models import GeoJSONDataSource, LinearColorMapper, ColorBar
 from bokeh.palettes import brewer
 from bokeh.io import curdoc, output_notebook
-from bokeh.models import Slider, HoverTool
+from bokeh.models import Select, HoverTool
 from bokeh.layouts import widgetbox, row, column
 
 #Import Data
@@ -38,7 +38,7 @@ palette = palette[::-1]
 color_mapper = LinearColorMapper(palette = palette, low = 880, high = 3000, nan_color = '#d9d9d9')
 
 #Add hover tool
-hover = HoverTool(tooltips = [ ('Postcode','@postcode'),('Health Expenditure per cap.', '@costs_per_'),('Average age'
+hover = HoverTool(tooltips = [ ('Municipality','@statnaam'),('Postcode','@postcode'),('Health Expenditure per cap.', '@costs_per_'),('Average age'
                                 ,'@age'),('Household income','@wa_SHI'),('Socio economic status','@status')])
 
 
@@ -70,10 +70,10 @@ def update_plot(attr, old, new):
     geosource.geojson = new_data
     p.title.text = 'Health expenditure per capita in the Netherlands,%d' %yr
 
-# Make a slider object: slider
-slider = Slider(title = 'Year',start =2011 , end = 2016, step = 1, value = 2016)
-slider.on_change('value', update_plot)
+# Make a Select object: slider
+select = Select(title="Year", value='2016', options=['2011', '2012', '2013', '2014', '2015', '2016'])
+select.on_change('value', update_plot)
 
 # Make a column layout of widgetbox(slider) and plot, and add it to the current document
-layout = column(p,widgetbox(slider))
+layout = column(p,select)
 curdoc().add_root(layout)
