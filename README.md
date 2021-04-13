@@ -2,4 +2,4 @@
 
 Interactive map of the Netherlands using Bokeh library. 
 
-![Map](bokeh_plot.png)
+![Map](bokeh_plot.png =100x20)
