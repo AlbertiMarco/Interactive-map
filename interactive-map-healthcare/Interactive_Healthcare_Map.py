@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import pandas as pd
 import numpy as np
 import math
@@ -17,28 +11,11 @@ from bokeh.io import curdoc, output_notebook
 from bokeh.models import Slider, HoverTool
 from bokeh.layouts import widgetbox, row, column
 
-
-# In[33]:
-
-
-mun=gpd.read_file('dataframe.shp')
-
-
-# In[47]:
-
-
+#Import Data
+mun=gpd.read_file('interactive-map-healthcare/dataframe.shp')
 data=mun[mun['year']==2016] #select a single year
-
-
-# In[48]:
-
-
 nl_data_json = json.loads(data.to_json())
 json_data = json.dumps(nl_data_json)
-
-
-# In[57]:
-
 
 #Define function that returns json_data for year selected by user.
 
