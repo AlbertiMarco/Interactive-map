@@ -65,7 +65,7 @@ p.add_layout(color_bar, 'below')
 
 # Define the callback function: update_plot
 def update_plot(attr, old, new):
-    yr = slider.value
+    yr = int(select.value)
     new_data = json_data(yr)
     geosource.geojson = new_data
     p.title.text = 'Health expenditure per capita in the Netherlands,%d' %yr
