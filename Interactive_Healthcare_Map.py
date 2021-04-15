@@ -48,7 +48,7 @@ color_bar = ColorBar(color_mapper=color_mapper, label_standoff=8,width = 400, he
 
 
 #Create figure object.
-p = figure(title = 'Health expenditure per capita in the Netherlands, 2016', plot_height = 700 , plot_width = 800)
+p = figure(title = 'Health expenditure per capita in the Netherlands, 2016', plot_height = 900 , plot_width = 800)
 p.xgrid.grid_line_color = None
 p.ygrid.grid_line_color = None
 p.add_tools(hover)
