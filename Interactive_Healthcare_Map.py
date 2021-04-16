@@ -12,7 +12,7 @@ from bokeh.models import Select, HoverTool
 from bokeh.layouts import widgetbox, row, column
 
 #Import Data
-mun=gpd.read_file('data/dataframe.shp')
+mun=gpd.read_file('data/data.json')
 data=mun[mun['year']==2016] #select a single year
 nl_data_json = json.loads(data.to_json())
 json_data = json.dumps(nl_data_json)
@@ -35,10 +35,10 @@ palette = brewer['YlOrRd'][8]
 palette = palette[::-1]
 
 #Instantiate LinearColorMapper that linearly maps numbers in a range, into a sequence of colors.
-color_mapper = LinearColorMapper(palette = palette, low = 880, high = 3000, nan_color = '#d9d9d9')
+color_mapper = LinearColorMapper(palette = palette, low = 1200, high = 2800, nan_color = '#d9d9d9')
 
 #Add hover tool
-hover = HoverTool(tooltips = [ ('Municipality','@statnaam'),('Postcode','@postcode'),('Health Expenditure per cap.', '@costs_per_'),('Average age'
+hover = HoverTool(tooltips = [ ('Municipality','@statnaam'),('Population','@number_citizens'),('Health Expenditure per cap.', '@costs_per_head'),('Average age'
                                 ,'@age'),('Household income','@wa_SHI'),('Socio economic status','@status')])
 
 
@@ -48,7 +48,7 @@ color_bar = ColorBar(color_mapper=color_mapper, label_standoff=8,width = 400, he
 
 
 #Create figure object.
-p = figure(title = 'Health expenditure per capita in the Netherlands, 2016', plot_height = 900 , plot_width = 800)
+p = figure(title = 'Health expenditure per capita in the Netherlands, 2016', plot_height = 800 , plot_width = 700)
 p.xgrid.grid_line_color = None
 p.ygrid.grid_line_color = None
 p.add_tools(hover)
